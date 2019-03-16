@@ -1,1 +1,1 @@
-web: gunicorn -k eventlet module:app
+web: gunicorn -k eventlet app:app
