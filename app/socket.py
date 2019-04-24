@@ -1,8 +1,8 @@
+import json
+import base64
 from . import socketio
 from .model.usermanager import session
 from flask_socketio import emit
-import json
-import base64
 
 
 @socketio.on('hello')
@@ -27,7 +27,7 @@ def broadcast():
     message = {
         'status': 200,
         'message': 'OK',
-        'enemies_data': session.to_json()
+        'enemies_data': session.to_dict()
     }
     ascii_str = json.dumps(message, ensure_ascii=False).encode('ascii')
     emit('broadcast', base64.b64encode(ascii_str), broadcast=True)
