@@ -1,7 +1,7 @@
 from .user import User
 
 
-class UserSession:
+class Session:
     def __init__(self):
         self.user_list = []
         self.id = 0
@@ -32,4 +32,4 @@ class UserSession:
 Single instance of user session
 Reinitialize if needed
 """
-session = UserSession()
+session = Session()
