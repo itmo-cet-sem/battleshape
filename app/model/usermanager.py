@@ -28,8 +28,6 @@ class UserSession:
         return message
 
 
-"""
-    Single instance of user session
-    Reinitialize if needed
-"""
+"""Single instance of user session"""
+"""Reinitialize if needed"""
 session = UserSession()
