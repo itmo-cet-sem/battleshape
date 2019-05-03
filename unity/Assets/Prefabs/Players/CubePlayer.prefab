@@ -26,10 +26,9 @@ GameObject:
   - component: {fileID: 143037408752104914}
   - component: {fileID: 65025782261010712}
   - component: {fileID: 114480205638263852}
-  - component: {fileID: 114866815815170766}
   m_Layer: 0
   m_Name: CubePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,17 +295,6 @@ MonoBehaviour:
   force: 25
   koolDown: 0.5
   damage: 10
---- !u!114 &114866815815170766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147839361859900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c607e7b13109684cb913ad5dbfdbba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114928865611985224
 MonoBehaviour:
   m_ObjectHideFlags: 1

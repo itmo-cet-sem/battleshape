@@ -7,23 +7,25 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="DeadController.cs" t="Include" />
           <e p="Interface" t="Include">
             <e p="Health.cs" t="Include" />
             <e p="Time.cs" t="Include" />
           </e>
           <e p="Level" t="Include">
+            <e p="DeadBlock.cs" t="Include" />
             <e p="Finish.cs" t="Include" />
             <e p="Respawn" t="Include">
               <e p="Respawn.cs" t="Include" />
               <e p="RespawnController.cs" t="Include" />
             </e>
           </e>
-          <e p="MainMenu" t="Include">
-            <e p="Events.cs" t="Include" />
+          <e p="Menu" t="Include">
+            <e p="DeadMenuEvents.cs" t="Include" />
             <e p="InstantiatePlayer.cs" t="Include" />
+            <e p="MainMenuEvents.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
-            <e p="DeadController.cs" t="Include" />
             <e p="FPSController.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
             <e p="Stats.cs" t="Include" />
