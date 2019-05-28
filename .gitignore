@@ -12,7 +12,6 @@ xcuserdata/
 *.xccheckout
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
-build/
 DerivedData/
 *.moved-aside
 *.pbxuser
@@ -287,8 +286,8 @@ venv.bak/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
-[Bb]uilds/
+#[Bb]uild/
+#[Bb]uilds/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
