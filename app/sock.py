@@ -19,6 +19,9 @@ def joined(data):
 @socketio.on('move')
 def moved(data):
     user_id = request.sid
+    coordinates = json.loads(data)
+    data = {'coordinates': coordinates}
+    redis.set(user_id, json.dumps(data))
     response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in
                 redis.keys(f'^(?!{user_id})$')]
     emit('moved', response)
