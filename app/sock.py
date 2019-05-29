@@ -8,7 +8,8 @@ from .memory import redis
 
 @socketio.on('joined')
 def joined(data):
-    coordinates = json.loads(data)
+    data = json.loads(data)
+    coordinates = data['coordinates']
     user_id = request.sid
     data = {'coordinates': coordinates}
     redis.set(user_id, json.dumps(data))
@@ -19,9 +20,9 @@ def joined(data):
 @socketio.on('move')
 def moved(data):
     user_id = request.sid
-    coordinates = json.loads(data)
-    data = {'coordinates': coordinates}
-    redis.set(user_id, json.dumps(data))
-    response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in
+    data = json.loads(data)
+    coordinates = data['coordinates']
+    redis.set(user_id, json.dumps(coordinates))
+    response = [{'user_id': k, 'data': json.loads(redis.gХet(k))} for k in
                 redis.keys(f'^(?!{user_id})$')]
     emit('moved', response)
