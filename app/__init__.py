@@ -13,6 +13,9 @@ def create_app():
     from app.routes import front
     app.register_blueprint(front)
 
+    from app.memory import redis
+    redis.init_app(app)
+
     socketio.init_app(app,
                       message_queue=app.config.get(app.config['REDIS_URL']),
                       async_mode='eventlet',
