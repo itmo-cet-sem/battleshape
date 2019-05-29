@@ -22,7 +22,7 @@ class Session:
         for user in self.user_list:
             key = "user_id_" + str(user.id)
             item = {
-                 key: user.to_dict()
+                key: user.to_dict()
             }
             message.append(item)
         return message

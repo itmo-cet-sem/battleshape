@@ -1,8 +1,10 @@
 import json
 import base64
-from . import socketio
-from .model.usermanager import session
 from flask_socketio import emit
+
+from app.model.usermanager import session
+
+from . import socketio
 
 
 @socketio.on('hello')

@@ -1,11 +1,20 @@
 from flask import Flask
 from flask_socketio import SocketIO
 
-from .config import Config
+from config import conf
 
-app = Flask(__name__, static_folder='../client/build')
-app.config.from_object(Config)
-socketio = SocketIO(app, message_queue=app.config.get('RABBITMQ_URL', app.config.get('REDIS_URL')))
+socketio = SocketIO()
 
-if __name__ == '__main__':
-    socketio.run(app)
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(conf)
+
+    from app.routes import front
+    app.register_blueprint(front)
+
+    socketio.init_app(app,
+                      message_queue=app.config.get(app.config['REDIS_URL']),
+                      async_mode='eventlet',
+                      logger=True, engineio_logger=True)
+    return app
