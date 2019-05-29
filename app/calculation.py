@@ -1,2 +1,2 @@
 def calculate_lives(shape):
-    pass
+    return 5
