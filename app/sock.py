@@ -26,15 +26,15 @@ def joined(data):
 @socketio.on('move')
 def moved(data):
     user_id = request.sid
+    redis_data = json.loads(redis.get(user_id))
     data = json.loads(data)
-    if len(data['coordinates']) == 3:
-        remove_outdated_coordinates(data['coordinates'])
+    if len(redis_data['coordinates']) == 3:
+        remove_outdated_coordinates(redis_data['coordinates'])
 
-    data['coordinates'].append({
+    redis_data['coordinates'].append({
         'datetime': datetime.datetime.utcnow(),
         'position': data['coordinates']
     })
-    redis.set(user_id, data)
-    response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in
-                redis.keys(f'^(?!{user_id})$')]
+    redis.set(user_id, redis_data)
+    response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in redis.keys(f'^(?!{user_id})$')]
     emit('moved', response)
