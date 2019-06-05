@@ -1,13 +1,15 @@
 import os
-from flask import send_from_directory
+from flask import send_from_directory, Blueprint
 
-from . import app
+front = Blueprint('frontend', __name__,
+                  url_prefix='/',
+                  static_folder='../unity/Build')
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
+@front.route('/', defaults={'path': ''})
+@front.route('/<path:path>')
 def serve_static(path):
-    if path != '' and os.path.exists(f'{app.static_folder}/{path}'):
-        return app.send_static_file(path)
+    if path != '' and os.path.exists(f'{front.static_folder}/{path}'):
+        return front.send_static_file(path)
     else:
-        return send_from_directory(app.static_folder, 'index.html')
+        return send_from_directory(front.static_folder, 'index.html')
