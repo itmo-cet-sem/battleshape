@@ -1,5 +1,5 @@
 import os
-from flask import send_from_directory, Blueprint
+from flask import send_from_directory, Blueprint, jsonify
 
 front = Blueprint('frontend', __name__,
                   url_prefix='/',
@@ -13,3 +13,8 @@ def serve_static(path):
         return front.send_static_file(path)
     else:
         return send_from_directory(front.static_folder, 'index.html')
+
+
+@front.route('/ping')
+def ping():
+    return jsonify('pong'), 200
