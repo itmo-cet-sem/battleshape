@@ -11,10 +11,11 @@ flask = "*"
 flask-socketio = "*"
 sqlalchemy = "*"
 flask-admin = "*"
-eventlet = "*"
 gunicorn = "*"
 flask-redis = "*"
 redis = "*"
+gevent = "*"
+gevent-websocket = "*"
 
 [requires]
 python_version = "3.7"

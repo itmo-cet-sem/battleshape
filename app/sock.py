@@ -9,6 +9,11 @@ from . import socketio
 from .memory import redis
 
 
+@socketio.on('connect')
+def connected():
+    emit('connected', {'user_id': request.sid})
+
+
 @socketio.on('joined')
 def joined(data):
     user_id = request.sid
@@ -28,11 +33,13 @@ def moved(data):
     user_id = request.sid
     redis_data = json.loads(redis.get(user_id))
     data = json.loads(data)
-    redis_data['coordinates'] = remove_outdated_coordinates(redis_data['coordinates'])
+    redis_data['coordinates'] = remove_outdated_coordinates(
+        redis_data['coordinates'])
     redis_data['coordinates'].append({
         'datetime': datetime.datetime.utcnow(),
         'position': data['coordinates']
     })
     redis.set(user_id, redis_data)
-    response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in redis.keys(f'^(?!{user_id})$')]
+    response = [{'user_id': k, 'data': json.loads(redis.get(k))} for k in
+                redis.keys(f'^(?!{user_id})$')]
     emit('moved', response)
