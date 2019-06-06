@@ -18,5 +18,5 @@ def create_app():
 
     socketio.init_app(app,
                       message_queue=app.config.get(app.config['REDIS_URL']),
-                      logger=True, engineio_logger=True, monitor_clients=True)
+                      logger=True, engineio_logger=True)
     return app
