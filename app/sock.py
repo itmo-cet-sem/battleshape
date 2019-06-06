@@ -9,9 +9,10 @@ from . import socketio
 from .memory import redis
 
 
-@socketio.on('connect')
-def connected():
-    emit('connected', {'user_id': request.sid})
+@socketio.on('ping')
+def ping():
+    print(request.sid)
+    emit('pong', 'pong')
 
 
 @socketio.on('joined')
