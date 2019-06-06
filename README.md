@@ -1,4 +1,4 @@
-# [Battleshape](http://battleshape.me)
+# [Battleshape](https://battleshape.herokuapp.com/)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/186087370a4146978fbdb91490986be6)](https://app.codacy.com/app/eserdk/battleshape?utm_source=github.com&utm_medium=referral&utm_content=itmo-cet-sem/battleshape&utm_campaign=Badge_Grade_Settings)
 
