@@ -28,9 +28,7 @@ def moved(data):
     user_id = request.sid
     redis_data = json.loads(redis.get(user_id))
     data = json.loads(data)
-    if len(redis_data['coordinates']) == 3:
-        remove_outdated_coordinates(redis_data['coordinates'])
-
+    redis_data['coordinates'] = remove_outdated_coordinates(redis_data['coordinates'])
     redis_data['coordinates'].append({
         'datetime': datetime.datetime.utcnow(),
         'position': data['coordinates']
